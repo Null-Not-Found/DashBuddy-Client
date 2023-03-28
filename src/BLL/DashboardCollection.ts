@@ -8,6 +8,7 @@ export default class DashboardCollection {
     const dashboard = await DashboardCollection.DashboardCollectionDAL.fetch(id);
 
     return new Dashboard(
+      dashboard.id,
       dashboard.version,
       dashboard.columns,
       dashboard.rows,

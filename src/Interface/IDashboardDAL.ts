@@ -1,5 +1,5 @@
 import type {DashboardDTO} from "@/DTO/DashboardDTO";
 
 export default interface IDashboardDAL {
-  save(config: DashboardDTO): Promise<void>
+  save(id: string, config: DashboardDTO): Promise<void>
 }

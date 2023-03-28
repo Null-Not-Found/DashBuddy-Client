@@ -8,6 +8,7 @@ export default class Dashboard {
   private __widgets: Widget[]
 
   constructor(
+    private id: string,
     public version: number,
     public columns: number,
     public rows: number,
@@ -40,7 +41,7 @@ export default class Dashboard {
       }
     }
 
-    Dashboard.DashboardDAL.save(this.toDTO());
+    Dashboard.DashboardDAL.save(this.id, this.toDTO());
   }
 
   toDTO(): DashboardDTO {
@@ -51,6 +52,7 @@ export default class Dashboard {
     })
 
     return {
+      id: this.id,
       version: this.version,
       columns: this.columns,
       rows: this.rows,
