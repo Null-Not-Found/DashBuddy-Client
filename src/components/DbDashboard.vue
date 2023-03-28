@@ -1,24 +1,17 @@
 <template>
   <div class="db-dashboard">
-    <WidgetComponent v-for="widget in dashboard.widgets" :height="widget.height" :width="widget.width" :y="widget.y" :x="widget.x">
+    <DbWidget v-for="widget in dashboard.widgets" :height="widget.height" :width="widget.width" :y="widget.y" :x="widget.x">
       {{ widget.id }}
-    </WidgetComponent>
+    </DbWidget>
     <button @click="addWidget()">Add widget</button>
   </div>
 </template>
 
 <script setup lang="ts">
-import WidgetComponent from "@/components/Widget.vue";
+import DbWidget from "@/components/DbWidget.vue";
 import {computed, reactive, ref} from "vue";
 import DashboardCollection from "@/BLL/DashboardCollection";
-import Widget from "@/BLL/Widget"
-import WidgetDALMemoryContext from "@/DAL/WidgetDALMemoryContext";
-import DashboardDALMemoryContext from "@/DAL/DashboardDALMemoryContext";
 import Dashboard from "@/BLL/Dashboard";
-
-DashboardCollection.setDal(new DashboardDALMemoryContext())
-Dashboard.setDAL(new DashboardDALMemoryContext())
-Widget.setDAL(new WidgetDALMemoryContext())
 
 const dashboardCollection = new DashboardCollection()
 

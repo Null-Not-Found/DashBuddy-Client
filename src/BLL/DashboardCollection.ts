@@ -4,7 +4,7 @@ import type IDashboardCollectionDAL from "@/Interface/IDashboardCollectionDAL";
 export default class DashboardCollection {
   private static DashboardCollectionDAL: IDashboardCollectionDAL
 
-  static setDal(DAL: IDashboardCollectionDAL) {
+  static injectDAL(DAL: IDashboardCollectionDAL) {
     DashboardCollection.DashboardCollectionDAL = DAL
   }
 

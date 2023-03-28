@@ -7,7 +7,7 @@ export default class Dashboard {
   private static DashboardDAL: IDashboardDAL
   private __widgets: Widget[]
 
-  static setDAL(DAL: IDashboardDAL) {
+  static injectDAL(DAL: IDashboardDAL) {
     Dashboard.DashboardDAL = DAL;
   }
 

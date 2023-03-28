@@ -4,7 +4,7 @@ import type {WidgetDTO} from "@/DTO/WidgetDTO";
 export default class Widget {
   private static widgetDAL: IWidgetDAL
 
-  static setDAL(DAL: IWidgetDAL) {
+  static injectDAL(DAL: IWidgetDAL) {
     Widget.widgetDAL = DAL;
   }
 

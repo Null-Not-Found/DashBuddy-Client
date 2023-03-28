@@ -1,9 +1,9 @@
 <template>
   <div class="app-container">
     <suspense>
-      <Dashboard id="mainDashboard">
+      <DbDashboard id="mainDashboard">
         test
-      </Dashboard>
+      </DbDashboard>
     </suspense>
   </div>
 </template>
@@ -11,7 +11,7 @@
 <script setup lang="ts">
 import { ref } from "vue";
 
-import Dashboard from "../src/components/Dashboard.vue";
+import {DbDashboard} from "../src";
 
 const showSlider = ref(true);
 </script>
