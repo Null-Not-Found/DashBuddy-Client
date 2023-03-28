@@ -7,8 +7,12 @@ export default class Dashboard {
   private static DashboardDAL: IDashboardDAL
   private __widgets: Widget[]
 
+  static setDAL(DAL: IDashboardDAL) {
+    Dashboard.DashboardDAL = DAL;
+  }
+
   constructor(
-    private id: string,
+    private __id: string,
     public version: number,
     public columns: number,
     public rows: number,
@@ -30,33 +34,55 @@ export default class Dashboard {
     })
   }
 
-  createWidget(id: number, label: string, x: number, y: number, width: number, height: number) {
-    this.__widgets.push(new Widget(1, label, x, y, width, height));
+  get id(): string {
+    return this.__id
   }
 
-  deleteWidget(id: number) {
+  get widgets(): Widget[] {
+    const output = [...this.__widgets];
+
+    Object.freeze(output);
+
+    return output;
+  }
+
+  async save() {
+    await Dashboard.DashboardDAL.save(this.__id, this.toDTO())
+  }
+
+  async createWidget(label: string, x: number, y: number, width: number, height: number) {
+    this.__widgets.push(new Widget(1, label, x, y, width, height));
+
+    await this.save();
+  }
+
+  async deleteWidget(id: number) {
     for (let i = 0; i < this.__widgets.length; i++) {
       if (this.__widgets[i].id == id) {
         this.__widgets.splice(id, 1);
       }
     }
 
-    Dashboard.DashboardDAL.save(this.id, this.toDTO());
+    await this.save()
+  }
+
+  private widgetsToDTO(): WidgetDTO[] {
+    const output = [] as WidgetDTO[]
+
+    this.__widgets.forEach(widget => {
+      output.push(widget.toDTO())
+    })
+
+    return output
   }
 
   toDTO(): DashboardDTO {
-    const widgetDTOs = [] as WidgetDTO[]
-
-    this.__widgets.forEach(widget => {
-      widgetDTOs.push(widget.toDTO())
-    })
-
     return {
-      id: this.id,
+      id: this.__id,
       version: this.version,
       columns: this.columns,
       rows: this.rows,
-      widgets: widgetDTOs
+      widgets: this.widgetsToDTO()
     }
   }
 }

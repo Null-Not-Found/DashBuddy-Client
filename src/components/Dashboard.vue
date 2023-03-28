@@ -1,64 +1,45 @@
 <template>
   <div class="db-dashboard">
-    <Widget :x="0" :y="0" :width="2" :height="4">
-      <table class="db-table">
-        <tr>
-          <th>Product</th>
-          <th>Stock</th>
-        </tr>
-        <tr v-for="i in ['Apple', 'Orange', 'Banana', 'Avocado', 'Watermelon', 'Pear']">
-          <td>{{ i }}</td>
-          <td>{{ getRndInteger(1, 20) }}</td>
-        </tr>
-      </table>
-    </Widget>
-    <Widget :x="2" :y="0" :width="2" :height="2">
-      <Line
-          :options="{
-            responsive: true
-          }"
-        :data="{
-            labels: [ 'January', 'February', 'March' ],
-            datasets: [
-              {
-                label: 'Sales (1000x)',
-                backgroundColor: ['#e4442b'],
-                data: [23, 12, 7]
-              }
-            ]
-          }"
-      />
-    </Widget>
-    <Widget :x="2" :y="2" :width="2" :height="1">
-      <Doughnut
-          :options="{
-            responsive: true
-          }"
-        :data="{
-            labels: [ 'Sold', 'In stock', 'Out of stock' ],
-            datasets: [
-              {
-                backgroundColor: ['#41B883', '#00D8FF', '#E46651'],
-                data: [40, 20, 12]
-              }
-            ]
-          }"
-      /></Widget>
-    <Widget :x="2" :y="3" :width="2" :height="1"></Widget>
+    <WidgetComponent v-for="widget in dashboard.widgets" :height="widget.height" :width="widget.width" :y="widget.y" :x="widget.x">
+      {{ widget.id }}
+    </WidgetComponent>
+    <button @click="addWidget()">Add widget</button>
   </div>
 </template>
 
 <script setup lang="ts">
-import { Chart as ChartJS, Title, Tooltip, Legend, PointElement, LineElement, BarElement, CategoryScale, LinearScale, ArcElement } from 'chart.js'
-import { Doughnut, Line } from 'vue-chartjs'
+import WidgetComponent from "@/components/Widget.vue";
+import {computed, reactive, ref} from "vue";
+import DashboardCollection from "@/BLL/DashboardCollection";
+import Widget from "@/BLL/Widget"
+import WidgetDALMemoryContext from "@/DAL/WidgetDALMemoryContext";
+import DashboardDALMemoryContext from "@/DAL/DashboardDALMemoryContext";
+import Dashboard from "@/BLL/Dashboard";
 
-ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale, ArcElement, PointElement, LineElement)
+DashboardCollection.setDal(new DashboardDALMemoryContext())
+Dashboard.setDAL(new DashboardDALMemoryContext())
+Widget.setDAL(new WidgetDALMemoryContext())
 
-import Widget from "@/components/Widget.vue";
-import {computed, ref} from "vue";
+const dashboardCollection = new DashboardCollection()
+
+let db: Dashboard | undefined;
+
+try {
+  db = await dashboardCollection.fetchDashboard('test');
+} catch (e) {
+  db = await dashboardCollection.createDashboard();
+}
+
+const dashboard = reactive(db)
 
 const columns = ref(4);
-const rows = ref(4);
+const rows = ref(3);
+
+let index = 0;
+function addWidget() {
+  index++;
+  dashboard.createWidget('test', index, 0, 1, 2)
+}
 
 function generateFractions(amount: number) {
   const joiner = '1fr '

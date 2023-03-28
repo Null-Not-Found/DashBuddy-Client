@@ -1,8 +1,10 @@
 <template>
   <div class="app-container">
-    <Dashboard id="mainDashboard">
-      test
-    </Dashboard>
+    <suspense>
+      <Dashboard id="mainDashboard">
+        test
+      </Dashboard>
+    </suspense>
   </div>
 </template>
 

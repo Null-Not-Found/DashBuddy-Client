@@ -4,6 +4,10 @@ import type {WidgetDTO} from "@/DTO/WidgetDTO";
 export default class Widget {
   private static widgetDAL: IWidgetDAL
 
+  static setDAL(DAL: IWidgetDAL) {
+    Widget.widgetDAL = DAL;
+  }
+
   constructor(
     private __id: number,
     public label: string,
@@ -16,10 +20,6 @@ export default class Widget {
 
   get id(): number {
     return this.__id
-  }
-
-  static setDAL(DAL: IWidgetDAL) {
-    Widget.widgetDAL = DAL;
   }
 
   async fetch(): Promise<object> {
