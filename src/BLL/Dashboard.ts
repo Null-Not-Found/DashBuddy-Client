@@ -5,13 +5,28 @@ import type {WidgetDTO} from "@/DTO/WidgetDTO";
 
 export default class Dashboard {
   private static DashboardDAL: IDashboardDAL
+  private __widgets: Widget[]
 
   constructor(
     public version: number,
     public columns: number,
     public rows: number,
-    private __widgets: Widget[]
+    widgets: WidgetDTO[]
   ) {
+    this.__widgets = []
+
+    widgets.forEach(widget => {
+      this.__widgets.push(
+        new Widget(
+          widget.id,
+          widget.label,
+          widget.x,
+          widget.y,
+          widget.width,
+          widget.height
+        )
+      )
+    })
   }
 
   createWidget(id: number, label: string, x: number, y: number, width: number, height: number) {
