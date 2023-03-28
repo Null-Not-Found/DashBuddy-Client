@@ -9,7 +9,7 @@
 <script setup lang="ts">
 import { ref } from "vue";
 
-import Dashboard from "../src/Dashboard.vue";
+import Dashboard from "../src/components/Dashboard.vue";
 
 const showSlider = ref(true);
 </script>

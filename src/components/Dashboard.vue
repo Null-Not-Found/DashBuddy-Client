@@ -54,7 +54,7 @@ import { Doughnut, Line } from 'vue-chartjs'
 
 ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale, ArcElement, PointElement, LineElement)
 
-import Widget from "@/Widget.vue";
+import Widget from "@/components/Widget.vue";
 import {computed, ref} from "vue";
 
 const columns = ref(4);

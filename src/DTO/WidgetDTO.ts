@@ -1,5 +1,6 @@
 export type WidgetDTO = {
-  name: string
+  id: number
+  label: string
   x: number
   y: number
   width: number

@@ -1,3 +1,3 @@
-import test from "./Dashboard.vue";
+import test from "./components/Dashboard.vue";
 
 export { test };
