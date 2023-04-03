@@ -1,8 +1,8 @@
 import type IWidgetDAL from "@/Interface/IWidgetDAL";
-import type {WidgetDTO} from "@/DTO/WidgetDTO";
+import type { WidgetDTO } from "@/DTO/WidgetDTO";
 
 export default class Widget {
-  private static widgetDAL: IWidgetDAL
+  private static widgetDAL: IWidgetDAL;
 
   static injectDAL(DAL: IWidgetDAL) {
     Widget.widgetDAL = DAL;
@@ -15,11 +15,10 @@ export default class Widget {
     public y: number,
     public width: number,
     public height: number
-  ) {
-  }
+  ) {}
 
   get id(): number {
-    return this._id
+    return this._id;
   }
 
   async fetch(): Promise<object> {
@@ -33,7 +32,7 @@ export default class Widget {
       x: this.x,
       y: this.y,
       width: this.width,
-      height: this.height
-    }
+      height: this.height,
+    };
   }
 }

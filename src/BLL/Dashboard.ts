@@ -1,11 +1,11 @@
 import type IDashboardDAL from "@/Interface/IDashboardDAL";
 import Widget from "@/BLL/Widget";
-import type {DashboardDTO} from "@/DTO/DashboardDTO";
-import type {WidgetDTO} from "@/DTO/WidgetDTO";
+import type { DashboardDTO } from "@/DTO/DashboardDTO";
+import type { WidgetDTO } from "@/DTO/WidgetDTO";
 
 export default class Dashboard {
-  private static DashboardDAL: IDashboardDAL
-  private readonly _widgets: Widget[]
+  private static DashboardDAL: IDashboardDAL;
+  private readonly _widgets: Widget[];
   private _widgetIdIndex = 0;
 
   static injectDAL(DAL: IDashboardDAL) {
@@ -19,9 +19,9 @@ export default class Dashboard {
     public rows: number,
     widgets: WidgetDTO[]
   ) {
-    this._widgets = []
+    this._widgets = [];
 
-    widgets.forEach(widget => {
+    widgets.forEach((widget) => {
       this._widgets.push(
         new Widget(
           widget.id,
@@ -31,16 +31,16 @@ export default class Dashboard {
           widget.width,
           widget.height
         )
-      )
+      );
 
       if (this._widgetIdIndex < widget.id) {
-        this._widgetIdIndex = widget.id
+        this._widgetIdIndex = widget.id;
       }
-    })
+    });
   }
 
   get id(): string {
-    return this._id
+    return this._id;
   }
 
   get widgets(): Widget[] {
@@ -52,13 +52,21 @@ export default class Dashboard {
   }
 
   async save() {
-    await Dashboard.DashboardDAL.save(this._id, this.toDTO())
+    await Dashboard.DashboardDAL.save(this._id, this.toDTO());
   }
 
-  async createWidget(label: string, x: number, y: number, width: number, height: number) {
+  async createWidget(
+    label: string,
+    x: number,
+    y: number,
+    width: number,
+    height: number
+  ) {
     this._widgetIdIndex += 1;
 
-    this._widgets.push(new Widget(this._widgetIdIndex, label, x, y, width, height));
+    this._widgets.push(
+      new Widget(this._widgetIdIndex, label, x, y, width, height)
+    );
 
     await this.save();
   }
@@ -70,17 +78,17 @@ export default class Dashboard {
       }
     }
 
-    await this.save()
+    await this.save();
   }
 
   private widgetsToDTO(): WidgetDTO[] {
-    const output = [] as WidgetDTO[]
+    const output = [] as WidgetDTO[];
 
-    this._widgets.forEach(widget => {
-      output.push(widget.toDTO())
-    })
+    this._widgets.forEach((widget) => {
+      output.push(widget.toDTO());
+    });
 
-    return output
+    return output;
   }
 
   toDTO(): DashboardDTO {
@@ -89,7 +97,7 @@ export default class Dashboard {
       version: this.version,
       columns: this.columns,
       rows: this.rows,
-      widgets: this.widgetsToDTO()
-    }
+      widgets: this.widgetsToDTO(),
+    };
   }
 }

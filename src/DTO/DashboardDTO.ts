@@ -1,9 +1,9 @@
-import type {WidgetDTO} from "@/DTO/WidgetDTO";
+import type { WidgetDTO } from "@/DTO/WidgetDTO";
 
 export type DashboardDTO = {
-  id: string
-  version: number
-  columns: number
-  rows: number
-  widgets: WidgetDTO[]
-}
+  id: string;
+  version: number;
+  columns: number;
+  rows: number;
+  widgets: WidgetDTO[];
+};

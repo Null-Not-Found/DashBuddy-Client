@@ -2,14 +2,16 @@ import Dashboard from "@/BLL/Dashboard";
 import type IDashboardCollectionDAL from "@/Interface/IDashboardCollectionDAL";
 
 export default class DashboardCollection {
-  private static DashboardCollectionDAL: IDashboardCollectionDAL
+  private static DashboardCollectionDAL: IDashboardCollectionDAL;
 
   static injectDAL(DAL: IDashboardCollectionDAL) {
-    DashboardCollection.DashboardCollectionDAL = DAL
+    DashboardCollection.DashboardCollectionDAL = DAL;
   }
 
   async fetchDashboard(id: string): Promise<Dashboard> {
-    const dashboard = await DashboardCollection.DashboardCollectionDAL.fetch(id);
+    const dashboard = await DashboardCollection.DashboardCollectionDAL.fetch(
+      id
+    );
 
     return new Dashboard(
       dashboard.id,
@@ -17,24 +19,18 @@ export default class DashboardCollection {
       dashboard.columns,
       dashboard.rows,
       dashboard.widgets
-    )
+    );
   }
 
   async createDashboard(): Promise<Dashboard> {
-    const dashboard = new Dashboard(
-      'test',
-      1,
-      4,
-      3,
-      []
-    )
+    const dashboard = new Dashboard("test", 1, 4, 3, []);
 
-    await dashboard.save()
+    await dashboard.save();
 
-    return dashboard
+    return dashboard;
   }
 
   async deleteDashboard(id: string): Promise<void> {
-    await DashboardCollection.DashboardCollectionDAL.delete(id)
+    await DashboardCollection.DashboardCollectionDAL.delete(id);
   }
 }
