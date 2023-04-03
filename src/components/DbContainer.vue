@@ -11,6 +11,6 @@
 <script setup lang="ts">
 defineProps({
   title: String,
-  subTitle: String
-})
+  subTitle: String,
+});
 </script>

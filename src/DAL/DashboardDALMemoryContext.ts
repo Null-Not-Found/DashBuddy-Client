@@ -1,11 +1,12 @@
 import type IDashboardDAL from "@/Interface/IDashboardDAL";
-import type {DashboardDTO} from "@/DTO/DashboardDTO";
+import type { DashboardDTO } from "@/DTO/DashboardDTO";
 import type IDashboardCollectionDAL from "@/Interface/IDashboardCollectionDAL";
 
-export default class DashboardDALMemoryContext implements IDashboardCollectionDAL, IDashboardDAL {
+export default class DashboardDALMemoryContext
+  implements IDashboardCollectionDAL, IDashboardDAL
+{
   async fetch(id: string): Promise<DashboardDTO> {
-    return new Promise(resolve => {
-
+    return new Promise((resolve) => {
       const response = localStorage.getItem(`DB-state_${id}`);
 
       if (!response) {
@@ -13,8 +14,7 @@ export default class DashboardDALMemoryContext implements IDashboardCollectionDA
       }
 
       resolve(JSON.parse(response) as DashboardDTO);
-    })
-
+    });
   }
 
   async save(id: string, config: DashboardDTO): Promise<void> {

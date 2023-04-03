@@ -1,22 +1,16 @@
 <template>
   <div class="app-container">
     <suspense>
-      <DbDashboard id="mainDashboard">
-        test
-      </DbDashboard>
+      <DbDashboard id="mainDashboard"> test </DbDashboard>
     </suspense>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
-
-import {DbDashboard} from "../src";
-
-const showSlider = ref(true);
+import { DbDashboard } from "../src";
 </script>
 
-<style>
+<style scoped>
 * {
   margin: 0;
   padding: 0;

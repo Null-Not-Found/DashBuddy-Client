@@ -3,13 +3,14 @@
     <DbHeader />
     <div class="grid db-grid">
       <DbWidget
-          v-for="widget in dashboard.dashboard.value?.widgets"
-          :id="widget.id"
-          :title="widget.title"
-          :x="widget.x"
-          :y="widget.y"
-          :width="widget.width"
-          :height="widget.height">
+        v-for="widget in dashboard.dashboard.value?.widgets"
+        :id="widget.id"
+        :title="widget.title"
+        :x="widget.x"
+        :y="widget.y"
+        :width="widget.width"
+        :height="widget.height"
+      >
         {{ widget.id }}
       </DbWidget>
     </div>
@@ -18,40 +19,35 @@
 
 <script setup lang="ts">
 import DbWidget from "@/components/DbWidget.vue";
-import {computed, reactive, ref} from "vue";
-import DashboardCollection from "@/BLL/DashboardCollection";
-import Dashboard from "@/BLL/Dashboard";
-import DbCreateWidget from "@/components/DbCreateWidget.vue";
+import { computed } from "vue";
 import DbHeader from "@/components/DbHeader.vue";
-import {useDashboard} from "@/composables/useDashboard";
+import { useDashboard } from "@/composables/useDashboard";
 
-const dashboard = useDashboard('test')
-
-let index = 0;
+const dashboard = useDashboard("test");
 
 function generateFractions(amount: number) {
-  const joiner = '1fr '
-  let output = ''
+  const joiner = "1fr ";
+  let output = "";
 
   for (let i = 0; i < amount; i++) {
-    output += joiner
+    output += joiner;
   }
 
-  return output
+  return output;
 }
 
 const columnsFractions = computed(() => {
   if (dashboard.dashboard.value?.columns) {
-    return generateFractions(dashboard.dashboard.value.columns)
+    return generateFractions(dashboard.dashboard.value.columns);
   }
-  return '1fr'
+  return "1fr";
 });
 
 const rowsFractions = computed(() => {
   if (dashboard.dashboard.value?.rows) {
-    return generateFractions(dashboard.dashboard.value.rows)
+    return generateFractions(dashboard.dashboard.value.rows);
   }
-  return '1fr'
+  return "1fr";
 });
 </script>
 

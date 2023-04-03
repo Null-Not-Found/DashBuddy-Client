@@ -1,45 +1,43 @@
 <template>
   <DbContainer class="widget">
     <slot />
-    <DbButton @click="deleteSelf">
-      Delete this widget
-    </DbButton>
+    <DbButton @click="deleteSelf"> Delete this widget</DbButton>
   </DbContainer>
 </template>
 
 <script setup lang="ts">
 import DbContainer from "@/components/DbContainer.vue";
 import DbButton from "@/components/DbButton.vue";
-import {useDashboard} from "@/composables/useDashboard";
+import { useDashboard } from "@/composables/useDashboard";
 
 const props = defineProps({
   id: {
     type: Number,
-    required: true
+    required: true,
   },
   x: {
     type: Number,
-    required: true
+    required: true,
   },
   y: {
     type: Number,
-    required: true
+    required: true,
   },
   width: {
     type: Number,
-    required: true
+    required: true,
   },
   height: {
     type: Number,
-    required: true
-  }
+    required: true,
+  },
 });
 
-const dashboard = useDashboard('test')
+const dashboard = useDashboard("test");
 
 function deleteSelf() {
-  console.log(props.id)
-  dashboard.dashboard.value?.deleteWidget(props.id)
+  console.log(props.id);
+  dashboard.dashboard.value?.deleteWidget(props.id);
 }
 </script>
 
