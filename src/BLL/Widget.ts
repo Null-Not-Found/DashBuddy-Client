@@ -9,7 +9,7 @@ export default class Widget {
   }
 
   constructor(
-    private __id: number,
+    private _id: number,
     public label: string,
     public x: number,
     public y: number,
@@ -19,7 +19,7 @@ export default class Widget {
   }
 
   get id(): number {
-    return this.__id
+    return this._id
   }
 
   async fetch(): Promise<object> {
@@ -28,7 +28,7 @@ export default class Widget {
 
   toDTO(): WidgetDTO {
     return {
-      id: this.__id,
+      id: this._id,
       label: this.label,
       x: this.x,
       y: this.y,

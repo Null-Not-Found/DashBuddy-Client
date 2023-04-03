@@ -5,23 +5,24 @@ import type {WidgetDTO} from "@/DTO/WidgetDTO";
 
 export default class Dashboard {
   private static DashboardDAL: IDashboardDAL
-  private __widgets: Widget[]
+  private readonly _widgets: Widget[]
+  private _widgetIdIndex = 0;
 
   static injectDAL(DAL: IDashboardDAL) {
     Dashboard.DashboardDAL = DAL;
   }
 
   constructor(
-    private __id: string,
+    private _id: string,
     public version: number,
     public columns: number,
     public rows: number,
     widgets: WidgetDTO[]
   ) {
-    this.__widgets = []
+    this._widgets = []
 
     widgets.forEach(widget => {
-      this.__widgets.push(
+      this._widgets.push(
         new Widget(
           widget.id,
           widget.label,
@@ -31,15 +32,19 @@ export default class Dashboard {
           widget.height
         )
       )
+
+      if (this._widgetIdIndex < widget.id) {
+        this._widgetIdIndex = widget.id
+      }
     })
   }
 
   get id(): string {
-    return this.__id
+    return this._id
   }
 
   get widgets(): Widget[] {
-    const output = [...this.__widgets];
+    const output = [...this._widgets];
 
     Object.freeze(output);
 
@@ -47,19 +52,21 @@ export default class Dashboard {
   }
 
   async save() {
-    await Dashboard.DashboardDAL.save(this.__id, this.toDTO())
+    await Dashboard.DashboardDAL.save(this._id, this.toDTO())
   }
 
   async createWidget(label: string, x: number, y: number, width: number, height: number) {
-    this.__widgets.push(new Widget(1, label, x, y, width, height));
+    this._widgetIdIndex += 1;
+
+    this._widgets.push(new Widget(this._widgetIdIndex, label, x, y, width, height));
 
     await this.save();
   }
 
   async deleteWidget(id: number) {
-    for (let i = 0; i < this.__widgets.length; i++) {
-      if (this.__widgets[i].id == id) {
-        this.__widgets.splice(id, 1);
+    for (let i = 0; i < this._widgets.length; i++) {
+      if (this._widgets[i].id == id) {
+        this._widgets.splice(i, 1);
       }
     }
 
@@ -69,7 +76,7 @@ export default class Dashboard {
   private widgetsToDTO(): WidgetDTO[] {
     const output = [] as WidgetDTO[]
 
-    this.__widgets.forEach(widget => {
+    this._widgets.forEach(widget => {
       output.push(widget.toDTO())
     })
 
@@ -78,7 +85,7 @@ export default class Dashboard {
 
   toDTO(): DashboardDTO {
     return {
-      id: this.__id,
+      id: this._id,
       version: this.version,
       columns: this.columns,
       rows: this.rows,

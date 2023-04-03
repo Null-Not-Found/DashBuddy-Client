@@ -6,18 +6,22 @@ export default class DashboardDALMemoryContext implements IDashboardCollectionDA
   async fetch(id: string): Promise<DashboardDTO> {
     return new Promise(resolve => {
 
-      const response = localStorage.getItem(`DB-state_${id}`)
+      const response = localStorage.getItem(`DB-state_${id}`);
 
       if (!response) {
-        throw new Error("No dashboard found.")
+        throw new Error("No dashboard found.");
       }
 
-      resolve(JSON.parse(response) as DashboardDTO)
+      resolve(JSON.parse(response) as DashboardDTO);
     })
 
   }
 
   async save(id: string, config: DashboardDTO): Promise<void> {
     localStorage.setItem(`DB-state_${id}`, JSON.stringify(config));
+  }
+
+  async delete(id: string): Promise<void> {
+    localStorage.removeItem(`DB-state_${id}`);
   }
 }

@@ -23,7 +23,7 @@ const showSlider = ref(true);
 }
 
 #mainDashboard {
-  width: calc(100% - 8px);
-  height: calc(100vh - 8px);
+  width: calc(100vw);
+  height: calc(100vh);
 }
 </style>

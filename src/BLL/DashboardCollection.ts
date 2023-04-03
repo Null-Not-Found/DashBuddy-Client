@@ -10,7 +10,7 @@ export default class DashboardCollection {
 
   async fetchDashboard(id: string): Promise<Dashboard> {
     const dashboard = await DashboardCollection.DashboardCollectionDAL.fetch(id);
-    console.log(dashboard)
+
     return new Dashboard(
       dashboard.id,
       dashboard.version,
@@ -32,5 +32,9 @@ export default class DashboardCollection {
     await dashboard.save()
 
     return dashboard
+  }
+
+  async deleteDashboard(id: string): Promise<void> {
+    await DashboardCollection.DashboardCollectionDAL.delete(id)
   }
 }

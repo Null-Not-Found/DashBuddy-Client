@@ -1,12 +1,22 @@
 <template>
-  <div class="widget">
-    <h1>Widget</h1>
+  <DbContainer class="widget">
     <slot />
-  </div>
+    <DbButton @click="deleteSelf">
+      Delete this widget
+    </DbButton>
+  </DbContainer>
 </template>
 
 <script setup lang="ts">
-defineProps({
+import DbContainer from "@/components/DbContainer.vue";
+import DbButton from "@/components/DbButton.vue";
+import {useDashboard} from "@/composables/useDashboard";
+
+const props = defineProps({
+  id: {
+    type: Number,
+    required: true
+  },
   x: {
     type: Number,
     required: true
@@ -23,7 +33,14 @@ defineProps({
     type: Number,
     required: true
   }
-})
+});
+
+const dashboard = useDashboard('test')
+
+function deleteSelf() {
+  console.log(props.id)
+  dashboard.dashboard.value?.deleteWidget(props.id)
+}
 </script>
 
 <style scoped>
