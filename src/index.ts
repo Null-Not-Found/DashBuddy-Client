@@ -1,7 +1,6 @@
-import DashboardCollection from "@/BLL/Dashboard/DashboardCollection";
-import Dashboard from "@/BLL/Dashboard/Dashboard";
-import Widget from "@/BLL/Widget/Widget";
-import "./Style/style.css";
+import DashboardCollection from "@/BLL/DashboardCollection";
+import Dashboard from "@/BLL/Dashboard";
+import Widget from "@/BLL/Widget";
 
 import DashboardDALMemoryContext from "@/DAL/DashboardDALMemoryContext";
 import WidgetDALMemoryContext from "@/DAL/WidgetDALMemoryContext";
@@ -11,6 +10,6 @@ DashboardCollection.injectDAL(new DashboardDALMemoryContext());
 Dashboard.injectDAL(new DashboardDALMemoryContext());
 Widget.injectDAL(new WidgetDALMemoryContext());
 
-import DbDashboard from "./components/Dashboard/MainDashboard.vue";
+import DbDashboard from "./components/CoDashboard.vue";
 
 export { DbDashboard };
