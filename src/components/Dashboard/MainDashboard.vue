@@ -1,6 +1,9 @@
 <template>
-  <div class="container">
-    <default-button class="fas fa-plus"></default-button>
+  <!--  <div class="container">-->
+  <!--    <default-button class="fas fa-plus"></default-button>-->
+  <!--  </div>-->
+  <div v-for="widget in widgets" :key="widget.id">
+    <default-widget :widget="widget"></default-widget>
   </div>
 </template>
 
@@ -9,8 +12,9 @@ import DefaultButton from "@/components/Default/DefaultButton.vue";
 import "@fortawesome/fontawesome-free/css/all.css";
 import Widget from "@/BLL/Widget/Widget";
 import { ref } from "vue";
+import DefaultWidget from "@/components/Widget/DefaultWidget.vue";
 
-const Widgets = ref<Widget[]>([
+const widgets = ref<Widget[]>([
   {
     id: 1,
     label: "line graph",
@@ -35,5 +39,6 @@ const Widgets = ref<Widget[]>([
   display: flex;
   justify-content: center;
   align-items: flex-end;
+  position: fixed;
 }
 </style>

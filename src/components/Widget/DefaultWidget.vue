@@ -1,53 +1,23 @@
 <template>
-  <DbContainer class="widget">
-  </DbContainer>
+  <div>
+    <WidgetContainer>
+      <h3>
+        {{ widget.label }}
+        <default-button @click="onDelete"> Delete </default-button>
+      </h3>
+    </WidgetContainer>
+  </div>
 </template>
 
 <script setup lang="ts">
-import DbContainer from "@/components/Widget/WidgetContainer.vue";
-import DbButton from "@/components/Default/DefaultButton.vue";
-import { useDashboard } from "@/composables/useDashboard";
+import Widget from "@/BLL/Widget/Widget";
+import WidgetContainer from "@/components/Widget/WidgetContainer.vue";
+import DefaultButton from "@/components/Default/DefaultButton.vue";
 
-const props = defineProps({
-  id: {
-    type: Number,
-    required: true,
-  },
-  x: {
-    type: Number,
-    required: true,
-  },
-  y: {
-    type: Number,
-    required: true,
-  },
-  width: {
-    type: Number,
-    required: true,
-  },
-  height: {
-    type: Number,
-    required: true,
-  },
-});
-
-const dashboard = useDashboard("test");
-
-function deleteSelf() {
-  console.log(props.id);
-  dashboard.dashboard.value?.deleteWidget(props.id);
-}
+defineProps<{ widget: Widget }>();
+const onDelete = (_id: number) => {
+  console.log(_id);
+};
 </script>
 
-<style scoped>
-.widget {
-  grid-column-start: v-bind(x + 1);
-  grid-column-end: v-bind(x + 1 + width);
-  grid-row-start: v-bind(y + 1);
-  grid-row-end: v-bind(y + 1 + height);
-
-  background-color: white;
-  padding: 1rem;
-  margin: 0.5rem;
-}
-</style>
+<style scoped></style>

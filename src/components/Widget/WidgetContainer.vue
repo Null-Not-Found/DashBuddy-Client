@@ -1,13 +1,12 @@
 <template>
-  <div class="bg-white rounded shadow shadow-neutral-200">
-    <h1 v-if="title" class="text-xl pt-4 px-4">{{ title }}</h1>
-    <h2 v-if="subTitle" class="text-lg px-4 text-gray-400">{{ subTitle }}</h2>
+  <div class="rounded-lg border border-gray-300 bg-white shadow-lg">
+    <h1 v-if="title">{{ title }}</h1>
+    <h2 v-if="subTitle">{{ subTitle }}</h2>
     <div class="p-4">
       <slot />
     </div>
   </div>
 </template>
-
 <script setup lang="ts">
 defineProps({
   title: String,
