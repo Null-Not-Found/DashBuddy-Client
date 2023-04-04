@@ -5,7 +5,7 @@
 
 <script setup lang="ts">
 import DbContainer from "@/components/Widget/WidgetContainer.vue";
-import DbButton from "@/components/Default/DefaultButton.vue";
+import DbButton from "@/components/Default/BaseButton.vue";
 import { useDashboard } from "@/composables/useDashboard";
 
 const props = defineProps({

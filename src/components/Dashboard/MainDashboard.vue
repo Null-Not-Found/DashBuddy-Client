@@ -1,14 +1,33 @@
 <template>
-  <div class="container">
-    <default-button class="fas fa-plus"></default-button>
+  <div class="db-dashboard">
+    <default-button><i class="fas fa-plus" /></default-button>
+    <BaseContainer title="title" sub-title="subtitle">
+      <template #icons><i class="fas fa-bars" /></template>
+      <template #default>
+        <p>Test</p>
+      </template>
+    </BaseContainer>
+    <BaseContainer title="title" sub-title="subtitle">
+      <template #icons><i class="fas fa-bars" /></template>
+      <template #default>
+        <p>Test</p>
+      </template>
+    </BaseContainer>
+    <BaseContainer title="Banana" sub-title="Image of a banana">
+      <p>Banana</p>
+      <img
+        src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.J713t6KgpMa6j5dXb9AiXQHaHa%26pid%3DApi&f=1&ipt=2e72716ebdb64154559fb448ec54ed78676de2e6cd54a2d3f4d703b081f8cc79&ipo=images"
+      />
+    </BaseContainer>
   </div>
 </template>
 
 <script setup lang="ts">
-import DefaultButton from "@/components/Default/DefaultButton.vue";
+import DefaultButton from "@/components/Default/BaseButton.vue";
 import "@fortawesome/fontawesome-free/css/all.css";
 import Widget from "@/BLL/Widget/Widget";
 import { ref } from "vue";
+import BaseContainer from "@/components/Default/BaseContainer.vue";
 
 const Widgets = ref<Widget[]>([
   {
@@ -31,9 +50,13 @@ const Widgets = ref<Widget[]>([
 </script>
 
 <style>
-.container {
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
+.db-dashboard {
+  padding: 2rem;
+  background-color: #f2f2f2;
+
+  > * {
+    margin: 0;
+    padding: 0;
+  }
 }
 </style>

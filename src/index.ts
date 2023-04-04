@@ -1,3 +1,5 @@
+import './Style/main.scss'
+
 import DashboardCollection from "@/BLL/Dashboard/DashboardCollection";
 import Dashboard from "@/BLL/Dashboard/Dashboard";
 // import Widget from "@/BLL/Widget/Widget";
