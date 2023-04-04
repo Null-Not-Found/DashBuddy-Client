@@ -3,7 +3,7 @@
     <DbButton @click="showModal = true" class="fas fa-plus"></DbButton>
   </div>
   <teleport to="body">
-    <CoModel v-show="showModal" title="Create new widget" subTitle="Settings">
+    <CoModel v-show="showModal">
       <label class="block">Title</label>
       <input class="block" type="text" v-model="newWidget.title" />
       <DbButton
@@ -27,12 +27,11 @@
 </template>
 
 <script setup lang="ts">
-import DbButton from "@/components/CoButton.vue";
-import CoModel from "@/components/CoModel.vue";
+import DbButton from "@/components/Default/DefaultButton.vue";
+import CoModel from "@/components/Widget/DefaultCreateModal.vue";
 import { reactive, ref } from "vue";
 import { useDashboard } from "@/composables/useDashboard";
-import '@fortawesome/fontawesome-free/css/all.css';
-
+import "@fortawesome/fontawesome-free/css/all.css";
 
 const showModal = ref(false);
 

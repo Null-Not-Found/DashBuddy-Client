@@ -1,5 +1,5 @@
-import DashboardCollection from "@/BLL/DashboardCollection";
-import type Dashboard from "@/BLL/Dashboard";
+import DashboardCollection from "@/BLL/Dashboard/DashboardCollection";
+import type Dashboard from "@/BLL/Dashboard/Dashboard";
 import { ref } from "vue";
 
 const dashboardCollection = new DashboardCollection();

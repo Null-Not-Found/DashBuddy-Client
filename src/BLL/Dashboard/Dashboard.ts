@@ -1,5 +1,5 @@
 import type IDashboardDAL from "@/Interface/IDashboardDAL";
-import Widget from "@/BLL/Widget";
+import Widget from "@/BLL/Widget/Widget";
 import type { DashboardDTO } from "@/DTO/DashboardDTO";
 import type { WidgetDTO } from "@/DTO/WidgetDTO";
 

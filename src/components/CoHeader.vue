@@ -8,5 +8,5 @@
 
 <script setup lang="ts">
 import DbCreateWidget from "@/components/CoCreateWidget.vue";
-import DbContainer from "@/components/CoContainer.vue";
+import DbContainer from "@/components/Widget/WidgetContainer.vue";
 </script>
