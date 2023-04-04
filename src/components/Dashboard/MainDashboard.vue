@@ -19,6 +19,7 @@
         src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.J713t6KgpMa6j5dXb9AiXQHaHa%26pid%3DApi&f=1&ipt=2e72716ebdb64154559fb448ec54ed78676de2e6cd54a2d3f4d703b081f8cc79&ipo=images"
       />
     </BaseContainer>
+    <ConfirmModal v-show="false"> Test </ConfirmModal>
   </div>
 </template>
 
@@ -28,6 +29,8 @@ import "@fortawesome/fontawesome-free/css/all.css";
 import Widget from "@/BLL/Widget/Widget";
 import { ref } from "vue";
 import BaseContainer from "@/components/Default/BaseContainer.vue";
+import BaseModal from "@/components/Default/BaseModal.vue";
+import ConfirmModal from "@/components/Default/ConfirmModal.vue";
 
 const Widgets = ref<Widget[]>([
   {

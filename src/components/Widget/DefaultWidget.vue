@@ -1,6 +1,5 @@
 <template>
-  <DbContainer class="widget">
-  </DbContainer>
+  <DbContainer class="widget"> </DbContainer>
 </template>
 
 <script setup lang="ts">

@@ -1,4 +1,4 @@
-import './Style/main.scss'
+import "./Style/main.scss";
 
 import DashboardCollection from "@/BLL/Dashboard/DashboardCollection";
 import Dashboard from "@/BLL/Dashboard/Dashboard";
