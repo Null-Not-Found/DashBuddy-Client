@@ -6,8 +6,8 @@
 </template>
 
 <script setup lang="ts">
-import DbContainer from "@/components/DbContainer.vue";
-import DbButton from "@/components/DbButton.vue";
+import DbContainer from "@/components/CoContainer.vue";
+import DbButton from "@/components/CoButton.vue";
 import { useDashboard } from "@/composables/useDashboard";
 
 const props = defineProps({

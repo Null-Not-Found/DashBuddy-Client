@@ -13,7 +13,7 @@
 </template>
 
 <script setup lang="ts">
-import DbContainer from "@/components/DbContainer.vue";
+import DbContainer from "@/components/CoContainer.vue";
 
 defineProps({
   title: String,

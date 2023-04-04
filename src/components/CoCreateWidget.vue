@@ -33,7 +33,7 @@
 </template>
 
 <script setup lang="ts">
-import DbButton from "@/components/DbButton.vue";
+import DbButton from "@/components/CoButton.vue";
 import DbModal from "@/components/DbModal.vue";
 import { reactive, ref } from "vue";
 import { useDashboard } from "@/composables/useDashboard";
@@ -69,7 +69,4 @@ function createWidget() {
 }
 </script>
 
-<style scoped>
-.db-container {
-}
-</style>
+<style scoped></style>
