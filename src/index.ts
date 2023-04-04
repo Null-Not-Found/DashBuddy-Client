@@ -1,15 +1,15 @@
-import DashboardCollection from "@/BLL/DashboardCollection";
-import Dashboard from "@/BLL/Dashboard";
-import Widget from "@/BLL/Widget";
+import DashboardCollection from "@/BLL/Dashboard/DashboardCollection";
+import Dashboard from "@/BLL/Dashboard/Dashboard";
+// import Widget from "@/BLL/Widget/Widget";
 
 import DashboardDALMemoryContext from "@/DAL/DashboardDALMemoryContext";
-import WidgetDALMemoryContext from "@/DAL/WidgetDALMemoryContext";
+//import WidgetDALMemoryContext from "@/DAL/WidgetDALMemoryContext";
 
 // Initialize the BLL with the appropriate DAL, using dependency injection.
 DashboardCollection.injectDAL(new DashboardDALMemoryContext());
 Dashboard.injectDAL(new DashboardDALMemoryContext());
-Widget.injectDAL(new WidgetDALMemoryContext());
+//Widget.injectDAL(new WidgetDALMemoryContext());
 
-import DbDashboard from "./components/CoDashboard.vue";
+import DbDashboard from "./components/Dashboard/MainDashboard.vue";
 
 export { DbDashboard };
