@@ -18,9 +18,9 @@
 </template>
 
 <script setup lang="ts">
-import DbWidget from "@/components/DbWidget.vue";
+import DbWidget from "@/components/CoWidget.vue";
 import { computed } from "vue";
-import DbHeader from "@/components/DbHeader.vue";
+import DbHeader from "@/components/CoHeader.vue";
 import { useDashboard } from "@/composables/useDashboard";
 
 const dashboard = useDashboard("test");

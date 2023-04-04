@@ -1,14 +1,9 @@
 <template>
+  <div class="button-container">
+    <DbButton @click="showModal = true" class="fas fa-plus"></DbButton>
+  </div>
   <teleport to="body">
-    <DbModal v-show="showModal" title="Create new widget" subTitle="Settings">
-      <label class="block">X</label>
-      <input class="block" type="number" v-model="newWidget.x" />
-      <label class="block">Y</label>
-      <input class="block" type="number" v-model="newWidget.y" />
-      <label class="block">Width</label>
-      <input class="block" type="number" v-model="newWidget.width" />
-      <label class="block">Height</label>
-      <input class="block" type="number" v-model="newWidget.height" />
+    <CoModel v-show="showModal" title="Create new widget" subTitle="Settings">
       <label class="block">Title</label>
       <input class="block" type="text" v-model="newWidget.title" />
       <DbButton
@@ -27,16 +22,17 @@
       >
         Close
       </DbButton>
-    </DbModal>
+    </CoModel>
   </teleport>
-  <DbButton @click="showModal = true"> Create new widget </DbButton>
 </template>
 
 <script setup lang="ts">
 import DbButton from "@/components/CoButton.vue";
-import DbModal from "@/components/DbModal.vue";
+import CoModel from "@/components/CoModel.vue";
 import { reactive, ref } from "vue";
 import { useDashboard } from "@/composables/useDashboard";
+import '@fortawesome/fontawesome-free/css/all.css';
+
 
 const showModal = ref(false);
 
@@ -68,5 +64,8 @@ function createWidget() {
   );
 }
 </script>
-
-<style scoped></style>
+<style scoped>
+.button-container {
+  text-align: center;
+}
+</style>

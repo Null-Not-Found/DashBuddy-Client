@@ -11,6 +11,6 @@ DashboardCollection.injectDAL(new DashboardDALMemoryContext());
 Dashboard.injectDAL(new DashboardDALMemoryContext());
 Widget.injectDAL(new WidgetDALMemoryContext());
 
-import DbDashboard from "./components/DbDashboard.vue";
+import DbDashboard from "./components/CoDashboard.vue";
 
 export { DbDashboard };

@@ -46,6 +46,7 @@
     "vue-tsc": "^1.0.9"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^6.4.0",
     "@types/chart.js": "^2.9.37",
     "chart.js": "^4.2.1",
     "vue-chartjs": "^5.2.0"
