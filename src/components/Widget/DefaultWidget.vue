@@ -1,7 +1,5 @@
 <template>
   <DbContainer class="widget">
-    <slot />
-    <DbButton @click="deleteSelf"> Delete this widget</DbButton>
   </DbContainer>
 </template>
 
