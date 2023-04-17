@@ -22,16 +22,7 @@ export default class Dashboard {
     this._widgets = [];
 
     widgets.forEach((widget) => {
-      this._widgets.push(
-        new Widget(
-          widget.id,
-          widget.label,
-          widget.x,
-          widget.y,
-          widget.width,
-          widget.height
-        )
-      );
+      this._widgets.push(new Widget(widget.id, widget.title, widget.chartType));
 
       if (this._widgetIdIndex < widget.id) {
         this._widgetIdIndex = widget.id;
@@ -43,7 +34,7 @@ export default class Dashboard {
     return this._id;
   }
 
-  get widgets(): Widget[] {
+  public get widgets(): Widget[] {
     const output = [...this._widgets];
 
     Object.freeze(output);
@@ -55,18 +46,10 @@ export default class Dashboard {
     await Dashboard.DashboardDAL.save(this._id, this.toDTO());
   }
 
-  async createWidget(
-    label: string,
-    x: number,
-    y: number,
-    width: number,
-    height: number
-  ) {
+  async createWidget(title: string, chartType: string) {
     this._widgetIdIndex += 1;
 
-    this._widgets.push(
-      new Widget(this._widgetIdIndex, label, x, y, width, height)
-    );
+    this._widgets.push(new Widget(this._widgetIdIndex, title, chartType));
 
     await this.save();
   }

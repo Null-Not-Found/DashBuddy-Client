@@ -1,40 +1,21 @@
 <template>
-  <BaseContainer class="widget"></BaseContainer>
+  <BaseContainer :title="title" class="widget"></BaseContainer>
 </template>
 
 <script setup lang="ts">
 import BaseContainer from "@/components/Default/BaseContainer.vue";
-import { useDashboard } from "@/composables/useDashboard";
 
-const props = defineProps({
-  id: {
-    type: Number,
-    required: true,
-  },
-  x: {
-    type: Number,
-    required: true,
-  },
-  y: {
-    type: Number,
-    required: true,
-  },
-  width: {
-    type: Number,
-    required: true,
-  },
-  height: {
-    type: Number,
-    required: true,
-  },
-});
+defineProps<{
+  id: number;
+  title: string;
+}>();
 
-const dashboard = useDashboard("test");
+// const dashboard = useDashboard("test");
 
-function deleteSelf() {
-  console.log(props.id);
-  dashboard.dashboard.value?.deleteWidget(props.id);
-}
+// function deleteSelf() {
+//   console.log(props.id);
+//   dashboard.dashboard.value?.deleteWidget(props.id);
+// }
 </script>
 
 <style scoped>

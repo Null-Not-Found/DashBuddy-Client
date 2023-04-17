@@ -1,6 +1,6 @@
 <template>
   <div class="db-modal-background">
-    <BaseContainer class="db-modal-container">
+    <BaseContainer :title="title" class="db-modal-container">
       <slot />
     </BaseContainer>
   </div>
@@ -8,6 +8,10 @@
 
 <script setup lang="ts">
 import BaseContainer from "@/components/Default/BaseContainer.vue";
+
+defineProps<{
+  title: string;
+}>();
 </script>
 
 <style scoped lang="scss">
@@ -22,6 +26,7 @@ import BaseContainer from "@/components/Default/BaseContainer.vue";
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 10;
 }
 
 .db-modal-container {

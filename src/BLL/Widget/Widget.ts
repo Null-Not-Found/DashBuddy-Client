@@ -1,9 +1,17 @@
-export default class Widget {
-  public id: number;
-  public label: string;
+import type { WidgetDTO } from "@/DTO/WidgetDTO";
 
-  constructor(_id: number, _label: string) {
-    this.id = _id;
-    this.label = _label;
+export default class Widget {
+  constructor(
+    public id: number,
+    public title: string,
+    public chartType: string
+  ) {}
+
+  toDTO(): WidgetDTO {
+    return {
+      id: this.id,
+      title: this.title,
+      chartType: this.chartType,
+    };
   }
 }
