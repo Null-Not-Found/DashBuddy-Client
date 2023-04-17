@@ -1,10 +1,9 @@
 <template>
-  <DbContainer class="widget"> </DbContainer>
+  <BaseContainer class="widget"></BaseContainer>
 </template>
 
 <script setup lang="ts">
-import DbContainer from "@/components/Widget/WidgetContainer.vue";
-import DbButton from "@/components/Default/BaseButton.vue";
+import BaseContainer from "@/components/Default/BaseContainer.vue";
 import { useDashboard } from "@/composables/useDashboard";
 
 const props = defineProps({
@@ -40,6 +39,7 @@ function deleteSelf() {
 
 <style scoped>
 .widget {
+  display: inline-block;
   grid-column-start: v-bind(x + 1);
   grid-column-end: v-bind(x + 1 + width);
   grid-row-start: v-bind(y + 1);

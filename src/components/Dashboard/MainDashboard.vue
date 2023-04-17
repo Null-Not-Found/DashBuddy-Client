@@ -1,6 +1,7 @@
 <template>
   <div class="db-dashboard">
     <default-button><i class="fas fa-plus" /></default-button>
+    <DefaultWidget id="2" height="69" width="911" y="666" x="420" />
     <BaseContainer title="title" sub-title="subtitle">
       <template #icons><i class="fas fa-bars" /></template>
       <template #default>
@@ -31,6 +32,7 @@ import { ref } from "vue";
 import BaseContainer from "@/components/Default/BaseContainer.vue";
 import BaseModal from "@/components/Default/BaseModal.vue";
 import ConfirmModal from "@/components/Default/ConfirmModal.vue";
+import DefaultWidget from "@/components/Widget/DefaultWidget.vue";
 
 const Widgets = ref<Widget[]>([
   {
