@@ -9,9 +9,9 @@ import { computed, onMounted, reactive, ref } from "vue";
 
 const chartCanvas = ref();
 
-let chartData = computed<ChartData<"bar">>(() => data);
+let chartData = computed<ChartData<"line">>(() => data);
 
-const data = reactive<ChartData<"bar">>({
+const data = reactive<ChartData<"line">>({
   labels: ["Jan", "Feb", "Mar", "Apr", "Jun"],
   datasets: [
     {
@@ -21,7 +21,7 @@ const data = reactive<ChartData<"bar">>({
   ],
 });
 
-const chartOptions: ChartOptions<"bar"> = {
+const chartOptions: ChartOptions<"line"> = {
   animation: false,
   plugins: {
     legend: {
@@ -31,7 +31,7 @@ const chartOptions: ChartOptions<"bar"> = {
 };
 onMounted(() => {
   new Chart(chartCanvas.value, {
-    type: "bar",
+    type: "line",
     data: chartData.value,
     options: chartOptions,
   });

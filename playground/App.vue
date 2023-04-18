@@ -1,9 +1,13 @@
 <template>
-  <BarGraph />
+  <div class="app-container">
+    <suspense>
+      <DbDashboard id="mainDashboard" />
+    </suspense>
+  </div>
 </template>
 
 <script setup lang="ts">
-import BarGraph from "../src/components/Graphs/BarGraph.vue";
+import { DbDashboard } from "../src";
 </script>
 
 <style>

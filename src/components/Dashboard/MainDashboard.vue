@@ -7,6 +7,11 @@
           <template #icons>
             <i class="fa fa-xmark" @click="deleteWidget(widget.id)"></i>
           </template>
+          <template #default>
+            <BarGraph v-if="widget.chartType === 'bar'" />
+            <LineGraph v-else-if="widget.chartType === 'line'" />
+            <PieGraph v-else-if="widget.chartType === 'pie'" />
+          </template>
         </DefaultWidget>
       </template>
     </div>
@@ -18,6 +23,9 @@ import "@fortawesome/fontawesome-free/css/all.css";
 import WidgetCreate from "@/components/Widget/WidgetCreate.vue";
 import { useDashboard } from "@/composables/useDashboard";
 import DefaultWidget from "@/components/Widget/DefaultWidget.vue";
+import BarGraph from "@/components/Graphs/BarGraph.vue";
+import LineGraph from "@/components/Graphs/LineGraph.vue";
+import PieGraph from "@/components/Graphs/PieGraph.vue";
 
 const { widgets, deleteWidget } = useDashboard("test");
 </script>
