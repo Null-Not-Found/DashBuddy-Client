@@ -3,7 +3,11 @@
     <WidgetCreate />
     <div class="db-widgets-container">
       <template v-for="widget in widgets" :key="widget.id">
-        <DefaultWidget :id="widget.id" :title="widget.title"> </DefaultWidget>
+        <DefaultWidget :id="widget.id" :title="widget.title">
+          <template #icons>
+            <i class="fa fa-xmark" @click="deleteWidget(widget.id)"></i>
+          </template>
+        </DefaultWidget>
       </template>
     </div>
   </div>
@@ -15,7 +19,7 @@ import WidgetCreate from "@/components/Widget/WidgetCreate.vue";
 import { useDashboard } from "@/composables/useDashboard";
 import DefaultWidget from "@/components/Widget/DefaultWidget.vue";
 
-const { widgets } = useDashboard("test");
+const { widgets, deleteWidget } = useDashboard("test");
 </script>
 
 <style>

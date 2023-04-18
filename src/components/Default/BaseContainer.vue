@@ -6,7 +6,7 @@
         <h2 v-if="subTitle">{{ subTitle }}</h2>
       </div>
       <div class="db-container-header-buttons">
-        <slot name="icons"></slot>
+        <slot name="icons" />
       </div>
     </div>
     <div class="db-dashboard-content">

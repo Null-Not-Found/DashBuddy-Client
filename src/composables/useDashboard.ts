@@ -28,6 +28,14 @@ export function useDashboard(id: string) {
     dashboard.value?.createWidget(title, chartType);
   }
 
+  function deleteWidget(id: number) {
+    if (!dashboard.value) {
+      throw new Error("No dashboard loaded.");
+    }
+
+    dashboard.value?.deleteWidget(id);
+  }
+
   const widgets = computed<Widget[]>(() => {
     if (!dashboard.value) {
       return [];
@@ -42,5 +50,5 @@ export function useDashboard(id: string) {
     return output;
   });
 
-  return { widgets, createWidget };
+  return { widgets, createWidget, deleteWidget };
 }

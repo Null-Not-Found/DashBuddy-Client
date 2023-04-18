@@ -1,5 +1,12 @@
 <template>
-  <BaseContainer :title="title" class="widget"></BaseContainer>
+  <BaseContainer :title="title" class="widget">
+    <template #icons>
+      <slot name="icons" />
+    </template>
+    <template #default>
+      <slot />
+    </template>
+  </BaseContainer>
 </template>
 
 <script setup lang="ts">
