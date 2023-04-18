@@ -1,23 +1,40 @@
 <template>
-  <div>
-    <WidgetContainer>
-      <h3>
-        {{ widget.label }}
-        <default-button @click="onDelete"> Delete </default-button>
-      </h3>
-    </WidgetContainer>
-  </div>
+  <BaseContainer :title="title" class="widget">
+    <template #icons>
+      <slot name="icons" />
+    </template>
+    <template #default>
+      <slot />
+    </template>
+  </BaseContainer>
 </template>
 
 <script setup lang="ts">
-import Widget from "@/BLL/Widget/Widget";
-import WidgetContainer from "@/components/Widget/WidgetContainer.vue";
-import DefaultButton from "@/components/Default/DefaultButton.vue";
+import BaseContainer from "@/components/Default/BaseContainer.vue";
 
-defineProps<{ widget: Widget }>();
-const onDelete = (_id: number) => {
-  console.log(_id);
-};
+defineProps<{
+  id: number;
+  title: string;
+}>();
+
+// const dashboard = useDashboard("test");
+
+// function deleteSelf() {
+//   console.log(props.id);
+//   dashboard.dashboard.value?.deleteWidget(props.id);
+// }
 </script>
 
-<style scoped></style>
+<style scoped>
+.widget {
+  display: inline-block;
+  grid-column-start: v-bind(x + 1);
+  grid-column-end: v-bind(x + 1 + width);
+  grid-row-start: v-bind(y + 1);
+  grid-row-end: v-bind(y + 1 + height);
+
+  background-color: white;
+  padding: 1rem;
+  margin: 0.5rem;
+}
+</style>

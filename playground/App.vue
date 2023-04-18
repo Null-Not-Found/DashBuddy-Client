@@ -10,14 +10,14 @@
 import { DbDashboard } from "../src";
 </script>
 
-<style scoped>
-* {
+<style>
+body {
   margin: 0;
   padding: 0;
 }
 
 #mainDashboard {
-  width: calc(100vw);
-  height: calc(100vh);
+  width: calc(100vw - 4rem);
+  height: calc(100vh - 4rem);
 }
 </style>

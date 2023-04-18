@@ -1,44 +1,35 @@
 <template>
-  <!--  <div class="container">-->
-  <!--    <default-button class="fas fa-plus"></default-button>-->
-  <!--  </div>-->
-  <div v-for="widget in widgets" :key="widget.id">
-    <default-widget :widget="widget"></default-widget>
+  <div class="db-dashboard">
+    <WidgetCreate />
+    <div class="db-widgets-container">
+      <template v-for="widget in widgets" :key="widget.id">
+        <DefaultWidget :id="widget.id" :title="widget.title">
+          <template #icons>
+            <i class="fa fa-xmark" @click="deleteWidget(widget.id)"></i>
+          </template>
+        </DefaultWidget>
+      </template>
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import DefaultButton from "@/components/Default/DefaultButton.vue";
 import "@fortawesome/fontawesome-free/css/all.css";
-import Widget from "@/BLL/Widget/Widget";
-import { ref } from "vue";
+import WidgetCreate from "@/components/Widget/WidgetCreate.vue";
+import { useDashboard } from "@/composables/useDashboard";
 import DefaultWidget from "@/components/Widget/DefaultWidget.vue";
 
-const widgets = ref<Widget[]>([
-  {
-    id: 1,
-    label: "line graph",
-  },
-  {
-    id: 2,
-    label: "pie chart",
-  },
-  {
-    id: 3,
-    label: "bar graph",
-  },
-  {
-    id: 4,
-    label: "another one",
-  },
-]);
+const { widgets, deleteWidget } = useDashboard("test");
 </script>
 
 <style>
-.container {
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  position: fixed;
+.db-dashboard {
+  padding: 2rem;
+  background-color: #f2f2f2;
+
+  > * {
+    margin: 0;
+    padding: 0;
+  }
 }
 </style>
