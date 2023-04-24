@@ -1,4 +1,4 @@
-import Dashboard from "@/BLL/Dashboard";
+import Dashboard from "@/BLL/Dashboard/Dashboard";
 import type IDashboardCollectionDAL from "@/Interface/IDashboardCollectionDAL";
 
 export default class DashboardCollection {
