@@ -1,15 +1,14 @@
 <template>
   <div class="app-container">
+
     <suspense>
       <DbDashboard id="mainDashboard" />
     </suspense>
-    <WidgetCreator></WidgetCreator>
   </div>
 </template>
 
 <script setup lang="ts">
 import { DbDashboard } from "../src";
-import WidgetCreator from "../src/components/Widget Creator/WidgetCreator.vue";
 </script>
 
 <style>

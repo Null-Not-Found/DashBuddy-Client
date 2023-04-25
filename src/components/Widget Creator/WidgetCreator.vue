@@ -2,18 +2,17 @@
   <splitpanes
     class="default-theme"
     :push-other-panes="false"
-    style="height: 400px"
   >
-    <pane size="50%" min-size="5" max-size="70">
-      <span> <ModelExplorer/> </span>
+    <pane max-size="20">
+      <span> <ModelExplorer /> </span>
     </pane>
     <pane>
       <splitpanes :push-other-panes="false" horizontal>
-        <pane min-size="10">
-          <span> <QuerryCreator /> </span>
+        <pane>
+          <span> <QueryCreator /> </span>
         </pane>
-        <pane min-size="10">
-          <span> <WidgetPreview/> </span>
+        <pane>
+          <span> <WidgetPreview /> </span>
         </pane>
       </splitpanes>
     </pane>
@@ -23,7 +22,7 @@
 <script setup lang="ts">
 import { Splitpanes, Pane } from "splitpanes";
 import "splitpanes/dist/splitpanes.css";
-import QuerryCreator from "@/components/Widget Creator/QuerryCreator.vue";
+import QueryCreator from "@/components/Widget Creator/QueryCreator.vue";
 import ModelExplorer from "@/components/Widget Creator/ModelExplorer.vue";
 import WidgetPreview from "@/components/Widget Creator/WidgetPreview.vue";
 </script>

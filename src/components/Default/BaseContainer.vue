@@ -18,7 +18,7 @@
 <script setup lang="ts">
 defineProps({
   title: String,
-  subTitle: String,
+  subTitle: String
 });
 </script>
 
@@ -27,7 +27,7 @@ defineProps({
   background-color: #fff;
   border-radius: 16px;
   box-shadow: rgba(0, 0, 0, 0.2) 0 3px 5px -1px,
-    rgba(0, 0, 0, 0.14) 0 6px 10px 0, rgba(0, 0, 0, 0.12) 0 1px 18px 0;
+  rgba(0, 0, 0, 0.14) 0 6px 10px 0, rgba(0, 0, 0, 0.12) 0 1px 18px 0;
   color: #3c4043;
   font-family: "Google Sans", Roboto, Arial, sans-serif;
   margin: 1rem 0;
@@ -37,6 +37,7 @@ defineProps({
     font-size: 2em;
     margin: 0;
   }
+
   h2 {
     color: #606165;
     font-size: 1.2em;

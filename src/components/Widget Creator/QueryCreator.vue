@@ -1,4 +1,4 @@
-<template>hallo</template>
+<template>Query Creator</template>
 
 <script setup lang="ts"></script>
 
