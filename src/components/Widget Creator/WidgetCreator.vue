@@ -22,9 +22,9 @@
 <script setup lang="ts">
 import { Splitpanes, Pane } from "splitpanes";
 import "splitpanes/dist/splitpanes.css";
-import QueryCreator from "@/components/Widget Creator/QueryCreator.vue";
-import ModelExplorer from "@/components/Widget Creator/ModelExplorer.vue";
-import WidgetPreview from "@/components/Widget Creator/WidgetPreview.vue";
+import QueryCreator from "@/components/Widget Creator/Query Creator/QueryCreator.vue";
+import ModelExplorer from "@/components/Widget Creator/Model Explorer/ModelExplorer.vue";
+import WidgetPreview from "@/components/Widget Creator/Widget Preview/WidgetPreview.vue";
 </script>
 
 <style scoped></style>
