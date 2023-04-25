@@ -13,7 +13,7 @@
           <span> <QuerryCreator /> </span>
         </pane>
         <pane min-size="10">
-          <span> Widget Preview </span>
+          <span> <WidgetPreview/> </span>
         </pane>
       </splitpanes>
     </pane>
@@ -25,6 +25,7 @@ import { Splitpanes, Pane } from "splitpanes";
 import "splitpanes/dist/splitpanes.css";
 import QuerryCreator from "@/components/Widget Creator/QuerryCreator.vue";
 import ModelExplorer from "@/components/Widget Creator/ModelExplorer.vue";
+import WidgetPreview from "@/components/Widget Creator/WidgetPreview.vue";
 </script>
 
 <style scoped></style>
