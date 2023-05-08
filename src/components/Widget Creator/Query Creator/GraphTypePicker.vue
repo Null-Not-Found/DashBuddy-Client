@@ -1,6 +1,6 @@
 <template>
   <div class="bar">
-    <input type="radio" name="chartType" value="simple" />
+    <input type="radio" name="chartType" value="bar" />
     <i class="fa-solid fa-chart-simple"></i>
 
     <input type="radio" name="chartType" value="pie" />
