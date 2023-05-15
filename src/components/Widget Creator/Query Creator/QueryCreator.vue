@@ -13,6 +13,7 @@
         />
       </template>
     </TabList>
+    <GraphTypePicker />
   </div>
 </template>
 
@@ -22,6 +23,7 @@ import TabList from "@/components/Default/TabList.vue";
 import { onMounted, ref } from "vue";
 import GraphTab from "@/components/Widget Creator/Query Creator/GraphBar/GraphTab.vue";
 import FilterTab from "@/components/Widget Creator/Query Creator/FilterTab/FilterTab.vue";
+import GraphTypePicker from "@/components/Widget Creator/Query Creator/GraphTypePicker.vue";
 
 const tabList = ref();
 
