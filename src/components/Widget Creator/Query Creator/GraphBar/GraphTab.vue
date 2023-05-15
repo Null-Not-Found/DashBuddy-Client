@@ -55,25 +55,11 @@ const addYAxisDropdown = (): void => {
   align-items: flex-start;
 }
 
-.dropdowns-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
-}
-
 .y-axis-dropdowns {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-}
-
-.dropdown-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 10px;
 }
 
 select {
