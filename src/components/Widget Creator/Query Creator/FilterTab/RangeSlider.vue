@@ -1,6 +1,5 @@
 <template>
   <div class="rangeSlider">
-    <label>{{ type }}</label>
     <Slider v-model="value" :min="min" :max="max" />
   </div>
 </template>
@@ -17,9 +16,6 @@ let props = defineProps({
   max: {
     type: Number,
     required: true,
-  },
-  type: {
-    type: String,
   },
 });
 

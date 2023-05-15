@@ -1,4 +1,5 @@
 <template>
+  <label>{{ type }}</label>
   <ValuePicker v-if="isStringArray" :value="value"></ValuePicker>
   <RangeSlider v-else :min="value[0]" :max="value[1]"></RangeSlider>
 </template>
@@ -9,6 +10,10 @@ import RangeSlider from "@/components/Widget Creator/Query Creator/FilterTab/Ran
 
 const props = defineProps<{
   value: String[] | number[];
+
+  type: {
+    type: String;
+  };
 }>();
 
 let isStringArray: boolean = typeof props.value[0] === "string";

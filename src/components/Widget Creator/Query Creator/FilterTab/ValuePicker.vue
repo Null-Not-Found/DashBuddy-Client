@@ -1,5 +1,4 @@
 <template>
-  <label>{{ type }}</label>
   <div v-for="year in value" :key="year" class="picker">
     <div>
       <input type="checkbox" checked />
@@ -15,9 +14,6 @@ defineProps({
   value: {
     type: Array as () => string[],
     required: true,
-  },
-  type: {
-    type: String,
   },
 });
 </script>
