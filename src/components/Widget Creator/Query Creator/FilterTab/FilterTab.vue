@@ -1,5 +1,5 @@
 <template>
-  <RangeSlider :min="min" :max="max"></RangeSlider>
+  <RangeSlider :min="min" :max="max" :type="hello"></RangeSlider>
   <ValuePicker :value="years"></ValuePicker>
 </template>
 
@@ -9,6 +9,7 @@ import RangeSlider from "@/components/Widget Creator/Query Creator/FilterTab/Ran
 const years: number[] = [2018, 2019, 2020, 2021, 2022];
 const min: number = 5;
 const max: number = 40;
+const hello: String = "title";
 </script>
 
 <style scoped></style>
