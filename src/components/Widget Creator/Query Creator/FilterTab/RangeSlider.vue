@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <label></label>
+  <div class="rangeSlider">
+    <label>{{ type }}</label>
     <Slider v-model="value" :min="min" :max="max" />
   </div>
 </template>
@@ -9,7 +9,7 @@
 import Slider from "@vueform/slider";
 import { defineProps } from "vue";
 
-defineProps({
+let props = defineProps({
   min: {
     type: Number,
     required: true,
@@ -23,7 +23,12 @@ defineProps({
   },
 });
 
-let value: number[] = [0, 100];
+let value: number[] = [props.min, props.max];
 </script>
 
-<style src="@vueform/slider/themes/default.css"></style>
+<style src="@vueform/slider/themes/default.css">
+.rangeSlider {
+  display: flex;
+  justify-content: center;
+}
+</style>
