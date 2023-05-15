@@ -1,5 +1,6 @@
 <template>
   <div class="app-container">
+
     <suspense>
       <DbDashboard id="mainDashboard" />
     </suspense>
