@@ -2,31 +2,28 @@
   <div class="graphbar">
     <div class="x-axis-dropdowns">
       <h1>X-axis</h1>
-      <select v-model="xAxisInfo">
-        <option>Date</option>
-      </select>
-      <select v-model="xAxisAggFn">
-        <option>Year</option>
-        <option>Month</option>
-        <option>Week</option>
-        <option>Day</option>
-      </select>
+      <draggable
+        :group="{ name: 'models', pull: false, put: true }"
+        v-model="modelsXAxis"
+        tag="ul"
+      >
+        <template #item="{ element }">
+          <li class="bubble">{{ element.title }}</li>
+        </template>
+      </draggable>
     </div>
     <div class="y-axis-dropdowns">
       <h1>Y-axis</h1>
-      <div v-for="(yAxis, index) in yAxisDropdowns" :key="index">
-        <select v-model="yAxis.info">
-          <option>Amount of products</option>
-          <option>Price</option>
-        </select>
-        <select v-model="yAxis.aggFn">
-          <option>Sum</option>
-          <option>Avg</option>
-          <option>Min</option>
-          <option>Max</option>
-        </select>
-      </div>
-      <button @click="addYAxisDropdown">Add Y Axis</button>
+      <draggable
+        class="y-axis-dropdowns"
+        :group="{ name: 'fsjiowa', pull: false, put: true }"
+        v-model="modelsYAxis"
+        tag="ul"
+      >
+        <template #item="{ element }">
+          <li class="bubble">{{ element.title }}</li>
+        </template>
+      </draggable>
     </div>
     <!-- graph implementation using D3 -->
   </div>
@@ -34,6 +31,12 @@
 
 <script setup lang="ts">
 import { ref, Ref } from "vue";
+import Model from "@/Model/Model";
+import Draggable from "vuedraggable";
+
+let modelsXAxis = ref<Model[]>([]);
+
+let modelsYAxis = ref<Model[]>([]);
 
 interface YAxisDropdown {
   info: string | null;
@@ -62,6 +65,15 @@ const addYAxisDropdown = (): void => {
   align-items: center;
 }
 
+.bubble {
+  margin: 0.2rem;
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 20px;
+  background-color: #345b8a;
+  color: white;
+}
+
 select {
   padding: 8px;
   border: none;
@@ -75,7 +87,7 @@ button {
   padding: 8px;
   border: none;
   border-radius: 5px;
-  background-color: #007bff;
+  background-color: #345b8a;
   color: #fff;
   cursor: pointer;
   margin-left: 10px;
@@ -83,7 +95,7 @@ button {
 }
 
 button:hover {
-  background-color: #0069d9;
+  background-color: #345b8a;
 }
 
 h1 {

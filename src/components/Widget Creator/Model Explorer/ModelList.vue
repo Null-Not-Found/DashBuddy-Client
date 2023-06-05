@@ -1,27 +1,30 @@
 <template>
-  <div class="models">
-    <ModelBubble
-      v-for="model in models"
-      :key="model.id"
-      :model-name="model.name"
-    />
-  </div>
+  <draggable
+    :group="{ name: 'models', pull: 'clone', put: false }"
+    v-model="models"
+    tag="ul"
+  >
+    <template #item="{ element }">
+      <li class="bubble">{{ element.title }}</li>
+    </template>
+  </draggable>
 </template>
 
 <script setup lang="ts">
+import Draggable from "vuedraggable";
 import { defineProps } from "vue";
-import ModelBubble from "@/components/Widget Creator/Model Explorer/ModelBubble.vue";
+import Model from "@/Model/Model";
 
-const props = defineProps({
-  models: Array,
-});
+defineProps<{ models: Model[] }>();
 </script>
 
 <style scoped>
-.models {
-  display: flex;
-  flex-direction: column;
-  align-items: start;
-  gap: 0.5rem;
+.bubble {
+  margin: 0.2rem;
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 20px;
+  background-color: #345b8a;
+  color: white;
 }
 </style>
