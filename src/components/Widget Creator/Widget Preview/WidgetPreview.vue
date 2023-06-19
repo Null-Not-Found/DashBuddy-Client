@@ -15,7 +15,7 @@ import BarGraph from "@/components/Graphs/BarGraph.vue";
 import LineGraph from "@/components/Graphs/LineGraph.vue";
 import PieGraph from "@/components/Graphs/PieGraph.vue";
 
-defineProps<{
+let props = defineProps<{
   title: string;
   chartType: string;
 }>();

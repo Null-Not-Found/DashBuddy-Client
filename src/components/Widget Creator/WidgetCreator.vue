@@ -9,7 +9,7 @@
           <span> <QueryCreator /> </span>
         </pane>
         <pane>
-          <span> <WidgetPreview title="test" chart-type="bar" /> </span>
+          <span> <WidgetPreview title="test" chart-type="pie" /> </span>
         </pane>
       </splitpanes>
     </pane>
