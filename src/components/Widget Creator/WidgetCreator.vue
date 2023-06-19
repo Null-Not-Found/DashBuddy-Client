@@ -1,8 +1,5 @@
 <template>
-  <splitpanes
-    class="default-theme"
-    :push-other-panes="false"
-  >
+  <splitpanes class="default-theme" :push-other-panes="false">
     <pane max-size="20">
       <span> <ModelExplorer /> </span>
     </pane>
@@ -12,7 +9,7 @@
           <span> <QueryCreator /> </span>
         </pane>
         <pane>
-          <span> <WidgetPreview /> </span>
+          <span> <WidgetPreview title="test" chart-type="bar" /> </span>
         </pane>
       </splitpanes>
     </pane>
